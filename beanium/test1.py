@@ -3,14 +3,12 @@ import requests
 import os
 import uuid
 
-# 取得するURL
 url = requests.get('https://www.kikkoman.co.jp/homecook/theme/popular/')
 soup = BeautifulSoup(url.content.decode("utf-8", "ignore"), 'html.parser')
 
-# cmn-recipe-card-wrapクラスを持つdivを取得
+
 wrap = soup.find('div', class_='cmn-recipe-card-wrap')
 
-# タイトルをすべて取得
 title = wrap.find_all('div', class_="cmn-recipe-card__title")
 title_list = [x.get_text() for x in title]
 print(title_list)

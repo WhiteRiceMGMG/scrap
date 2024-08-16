@@ -13,6 +13,8 @@ title_list = [x.get_text() for x in title]
 #print(title_list)
 
 imgs = soup.find_all('img',class_='cmn-recipe-card__image__inner')
+if not os.path.exists('img-kiko'):
+    os.makedirs('img-kiko')
 for img in imgs:
     print(img['src'])
     req_img = requests.get(img['src'])
